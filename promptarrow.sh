@@ -1,5 +1,27 @@
 #!/bin/sh
 
+# default
+THEME1=6 # user@host
+THEME2=12 # pwd
+THEME3=3 # nix
+THEME4=3 # git
+
+if [ $# -ge 1 ]; then
+  THEME1="$1" # user@host
+fi
+
+if [ $# -ge 2 ]; then
+  THEME2="$2" # pwd
+fi
+
+if [ $# -ge 3 ]; then
+  THEME3="$3" # nix
+fi
+
+if [ $# -ge 4 ]; then
+  THEME4="$4" # git
+fi
+
 # PROMPT_DIRTRIM=4
 INVARROW="🭨" # inverse arrow
 ARROW="🭬" # regular arrow
@@ -23,12 +45,11 @@ else
   esac
 fi
 
-# COLOR1=10
 if [ -z "$PS1_NIX" ]; then
-  COLOR1=6 # user@host
-  COLOR2=12 # pwd
-  COLOR3=3 # nix
-  COLOR4=3 # git
+  COLOR1=$THEME1 # user@host
+  COLOR2=$THEME2 # pwd
+  COLOR3=$THEME3 # nix
+  COLOR4=$THEME4 # git
 else
   COLOR1=185
   COLOR2=107
